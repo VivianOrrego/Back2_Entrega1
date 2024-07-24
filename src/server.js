@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import sessionRoutes from "./routes/session.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import { authenticate } from "./middlewares/auth.middleware.js";
 // import { authenticate } from "./middlewares/auth.middleware.js";
 
 const app = express();
@@ -26,7 +27,7 @@ mongoose
 
 // Routes
 app.use("/api/session", sessionRoutes);
-app.use("/api/users", userRoutes); // Toda la ruta protegida
+app.use("/api/users",authenticate, userRoutes); // Toda la ruta protegida
 
 // Start server
 app.listen(PORT, () => {

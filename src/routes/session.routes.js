@@ -61,9 +61,9 @@ router.get("/current", async (req, res) => {
     }
 });
 
-// router.get("/logout", (req, res) => {
-//     res.clearCookie("currentUser");
-//     res.status(200).json({ message: "Sesión cerrada" });
-// });
+router.get("/logout", (req, res) => {
+    res.clearCookie("currentUser");
+    res.status(200).json({ message: "Sesión cerrada" });
+});
 
 export default router;
