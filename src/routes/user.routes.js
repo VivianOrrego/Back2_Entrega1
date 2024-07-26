@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", authorize, async (req, res) => {
+router.post("/", async (req, res) => {
   const { first_name, last_name, email, age, password } = req.body;
 
   if (!first_name || !last_name || !email || !age || !password) {
