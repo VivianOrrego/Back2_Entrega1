@@ -2,12 +2,8 @@ import passport from "passport";
 import local from "passport-local";
 import jwt from "jsonwebtoken";
 import jwtStrategy from "passport-jwt";
-import {
-    userModel
-} from "../models/user.model.js";
-import {
-    comparePassword
-} from "../utils/hash.js";
+import { userModel} from "../models/user.model.js";
+import { comparePassword} from "../utils/hash.js";
 
 const LocalStrategy = local.Strategy;
 const JWTStrategy = jwtStrategy.Strategy;

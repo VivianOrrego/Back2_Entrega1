@@ -1,12 +1,6 @@
-import {
-    Router
-} from "express";
-import {
-    userModel
-} from "../models/user.model.js";
-import {
-    createHash
-} from "../utils/hash.js";
+import { Router} from "express";
+import { userModel} from "../models/user.model.js";
+import { createHash} from "../utils/hash.js";
 import passport from "passport";
 import { generateToken, verifyToken } from "../utils/jwt.js";
 import { authenticate } from "../middlewares/auth.middleware.js";
@@ -18,7 +12,7 @@ router.post(
     "/login",
     passport.authenticate("login", {
         session: false,
-        failureRedirect: "/login-error",
+        failureRedirect: "/api/session/login-error",
     }),
     async (req, res) => {
         if (!req.user) {

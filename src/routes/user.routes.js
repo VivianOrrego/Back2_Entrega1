@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { userModel } from "../models/user.model.js";
 import { createHash } from "../utils/hash.js";
-import { authorize } from "../middlewares/auth.middleware.js";
+import { authenticate } from "../middlewares/auth.middleware.js";
+
 
 const router = Router();
 
@@ -43,5 +44,16 @@ router.post("/", async (req, res) => {
       .json({ error: "Error al crear el usuario", details: error.message });
   }
 });
+
+router.get("/:id", authenticate, async (req, res) => {
+  const {id} = req.params;
+  try {
+      const user = await userModel.findById(id);
+      res.status(200).json(user);
+  } catch (error) {
+      res.status(500).json({message: error.message});
+  }
+});
+
 
 export default router;
